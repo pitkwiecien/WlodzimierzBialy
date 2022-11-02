@@ -1,0 +1,15 @@
+Temat strony:
+Kim jest Leszek Włodzimierz Biały
+
+Wykorzystane elementy jQuery:
+.html()
+.prop()
+.click()
+.css()
+.hide()
+.show()
+.animate()
+
+Opis strony:
+Strona przedstawia fakty biograficzne na temat wybitnego Polaka - Leszka Włodzimierza Białego. Możemy z niej wyczytać informacje o jego życiorysie, a nawet
+przejrzeć galerię jego zdjęć. Mamy także możliwość zagrania w pewną grę...
