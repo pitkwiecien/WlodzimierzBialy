@@ -1,9 +1,34 @@
 $(function(){
-    $("body #left a").prop("href", function(){
-        return $(this).prop("id")
+    $("body #left div.links").click(function(){
+        const id = $(this).prop("id")
+        window.location = getLink(id)
     })
+    loadAllColours()
 })
 
 function getLink(id){
-    return "/pages/" + toString(id) + ".html"
+    return id + ".html"
+}
+
+function loadColour(page){
+    let mainSelector = "body #" + page + "-main"
+    let linkSelector = "body #left #" + page
+    let colour = colours[page]
+    $(mainSelector).css("background-color", colour)
+    $(linkSelector).css("background-color", colour)
+}
+
+function loadAllColours(){
+    for (const [key, value] of Object.entries(colours)) {
+        loadColour(key)
+    }
+}
+
+colours = {
+    'life' : 'green',
+    'index' : 'aquamarine',
+    'works': 'gold',
+    'awards' : 'orange',
+    'gallery' : 'pink',
+    'game' : 'beige'
 }

@@ -1,0 +1,39 @@
+body{
+    margin: 0px;
+}
+
+.main{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 80%;
+    padding: 30px;
+    background-color: aqua;
+    color: #000;
+}
+
+.main #title{
+    font-size: 2em;
+    text-align: center;
+}
+
+#left{
+    font-size: 1em;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    padding-top: 10px;
+    width: 20%;
+    background-color: rgb(65, 65, 65);
+    color: #FFF;
+}
+
+body #left div.links{
+    cursor: pointer;
+    border: 1px solid #FFF;
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 10px;
+}
