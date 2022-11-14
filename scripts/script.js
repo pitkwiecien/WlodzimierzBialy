@@ -4,7 +4,28 @@ $(function(){
         window.location = getLink(id)
     })
     loadAllColours()
+
+
+    $("#left img").one("load", function() {
+        if(!$(this).attr("todelete")){
+            $(this).css("width", "100%")
+            $("#left").css("padding-top", "0px")
+            $(this).css("margin-bottom", "10px")
+        }
+    }).each(function() {
+        if(this.complete) {
+            $(this).trigger('load');
+        }
+        if($(this).attr("todelete")){
+            $(this).remove()
+        }
+    });
 })
+
+function onErrorFunc(elem){
+    console.log("changing")
+    $(elem).attr("todelete", true)
+}
 
 function getLink(id){
     return id + ".html"
