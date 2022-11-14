@@ -25,10 +25,10 @@ function loadAllColours(){
 }
 
 colours = {
-    'life' : 'green',
     'index' : 'aquamarine',
+    'life' : 'green',
     'works': 'gold',
     'awards' : 'orange',
     'gallery' : 'pink',
-    'game' : 'beige'
+    'game' : 'brown'
 }
