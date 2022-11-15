@@ -14,8 +14,15 @@ body{
 }
 
 .main #title{
-    font-size: 2em;
+    font-size: 5em;
     text-align: center;
+    color: #FFF;
+    text-shadow: 2px 2px 2px #000;
+}
+
+#main-content{
+    font-size: 3em;
+    margin-top: 50px;
 }
 
 #left{
@@ -30,10 +37,33 @@ body{
     color: #FFF;
 }
 
-body #left div.links{
-    cursor: pointer;
+.pageNavigators{
     border: 1px solid #FFF;
     border-radius: 10px;
+}
+
+.links{
+    cursor: pointer;
     padding: 10px;
     margin-left: 10px;
+}
+
+.navigators{
+    position: absolute;
+    bottom: 20px;
+    font-size: 3em;
+    color: white;
+    font-weight: bold;
+}
+
+#prev{
+    left: 20px;
+}
+
+#next{
+    right: 20px;
+}
+
+.deactivated{
+    color: grey;
 }
