@@ -91,8 +91,8 @@ function setUpGame(){
     const minX = objWidth/2 + viewPadding
     const minY = objHeight/2 + viewPadding
 
-    const maxX = viewWidth - (objWidth / 2) - viewPadding
-    const maxY = viewHeight - (objHeight / 2) - titleHeightWithPadding - viewPadding
+    const maxX = viewWidth - (objWidth / 2)- viewPadding
+    const maxY = viewHeight - (objHeight / 2) - titleHeightWithPadding  - viewPadding
 
     const x = randInt(minX, maxX)
     const y = randInt(minY, maxY)
@@ -101,6 +101,8 @@ function setUpGame(){
         "left" : x + "px",
         "bottom" : y + "px"
     })
+
+    //$("#title").html("<span id='leftSpan'>Clicks: </span><span id='rightSpan'>CPS: </span>")
 }
 
 function deactivate(selector){

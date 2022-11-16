@@ -82,3 +82,11 @@ body{
 .preGame{
     visibility: hidden;
 }
+
+#leftSpan{
+    float: left;
+}
+
+#rightSpan{
+    float: right;
+}
