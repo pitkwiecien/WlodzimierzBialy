@@ -67,3 +67,18 @@ body{
 .deactivated{
     color: grey;
 }
+
+#game-object{
+    display: block;
+    position: absolute;
+}
+
+.centered{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.preGame{
+    visibility: hidden;
+}

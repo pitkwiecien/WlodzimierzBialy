@@ -22,36 +22,86 @@ $(function(){
             $(this).remove()
         }
     });
-    changeFirst("#main-content", true)
-    const splitter = textSplitter("#main-content", 500)
-    loadPhase("#main-content", splitter, 0)
-    deactivate("#prev")
-    console.log(splitter)
-    if(splitter.length <= 1){
-        deactivate("#next")
-        $(".navigators").css("visibility", "hidden")
+    if($(".main").prop("id") != "game-main"){
+        changeFirst("#main-content", true)
+        const splitter = textSplitter("#main-content", 500)
+        loadPhase("#main-content", splitter, 0)
+        deactivate("#prev")
+        console.log(splitter)
+        if(splitter.length <= 1){
+            deactivate("#next")
+            $(".navigators").css("visibility", "hidden")
+        }
+        $(".navigators").click(function(){
+            if($(this).hasClass("deactivated")){
+                return
+            }
+            if($(this).prop("id") == "prev"){
+                phase -= 1
+                activate("#next")
+            } else {
+                phase += 1
+                activate("#prev")
+            }
+            loadPhase("#main-content", splitter, phase)
+            if(phase == 0){
+                deactivate("#prev")
+            }
+            if(phase + 1 == splitter.length){
+                deactivate("#next")
+            }
+        })
+    } else {
+        $("#prev").remove()
+        $("#next").remove()
+        setGameImageSize()
+        $("#game-object").css("visibility", "visible")
     }
 
-    $(".navigators").click(function(){
-        if($(this).hasClass("deactivated")){
-            return
-        }
-        if($(this).prop("id") == "prev"){
-            phase -= 1
-            activate("#next")
-        } else {
-            phase += 1
-            activate("#prev")
-        }
-        loadPhase("#main-content", splitter, phase)
-        if(phase == 0){
-            deactivate("#prev")
-        }
-        if(phase + 1 == splitter.length){
-            deactivate("#next")
-        }
+    $(".preGame").click(function(){
+        setUpGame()
     })
 })
+
+function randInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function setGameImageSize(){
+    $("#game-object").width($("#game-main").width() * 0.05)
+}
+  
+
+function setUpGame(){
+    const objSelector = "#game-object"
+    const viewWidth = $("#game-main").width()
+    const viewHeight = $("#game-main").height()
+    const viewPadding = $("#game-main").css("padding")
+
+    const titleHeightWithPadding = $("title").height + 10
+
+    $(objSelector).css("visibility", "visible")
+    $(objSelector).removeClass("preGame")
+    $(objSelector).removeClass("centered")
+
+    setGameImageSize()
+    const objWidth = $(objSelector).width()
+    const objHeight =$(objSelector).height()
+
+    const minX = objWidth/2 + viewPadding
+    const minY = objHeight/2 + viewPadding
+
+    const maxX = viewWidth - (objWidth / 2) - viewPadding
+    const maxY = viewHeight - (objHeight / 2) - titleHeightWithPadding - viewPadding
+
+    const x = randInt(minX, maxX)
+    const y = randInt(minY, maxY)
+
+    $(objSelector).css({
+        "left" : x + "px",
+        "bottom" : y + "px"
+    })
+}
 
 function deactivate(selector){
     $(selector).addClass("deactivated")
