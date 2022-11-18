@@ -5,7 +5,6 @@ $(function(){
     const splitter = textSplitter("#main-content", 500)
     loadPhase("#main-content", splitter, 0)
     deactivate("#prev")
-    console.log(splitter)
     if(splitter.length <= 1){
         deactivate("#next")
         $(".navigators").css("visibility", "hidden")
@@ -32,7 +31,6 @@ $(function(){
 })
 
 function loadPhase(selector, splitter, phase){
-    console.log(splitter[phase])
     splitter[phase].replaceAll("\n", "<br/>")
     $(selector).html(splitter[phase])
 }
