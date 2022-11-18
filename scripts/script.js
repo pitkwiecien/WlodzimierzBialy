@@ -1,4 +1,5 @@
 let phase = 0
+let time = 0.0
 
 $(function(){
     $("body #left div.links").click(function(){
@@ -116,6 +117,18 @@ function changePos(){
     $("#game-object").css({
         "left" : `${x}px`,  
         "bottom" : `${y}px`
+    })
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+ }
+
+async function changeTime(){
+    sleep(100).then(() => {
+        time += 0.1
+        console.log(time)
+        changeTime()
     })
 }
 
