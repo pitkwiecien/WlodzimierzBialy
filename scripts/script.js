@@ -70,23 +70,17 @@ function randInt(min, max) {
 function setGameImageSize(){
     $("#game-object").width($("#game-main").width() * 0.05)
 }
-  
 
-function setUpGame(){
+function nextPos(){
     const objSelector = "#game-object"
     const viewWidth = $("#game-main").width()
     const viewHeight = $("#game-main").height()
-    const viewPadding = $("#game-main").css("padding")
+    const viewPadding = formatPixelNumber($("#game-main").css("padding-top"))
 
-    const titleHeightWithPadding = $("title").height + 10
+    const titleHeightWithPadding = $("#title").height() + 10
 
-    $(objSelector).css("visibility", "visible")
-    $(objSelector).removeClass("preGame")
-    $(objSelector).removeClass("centered")
-
-    setGameImageSize()
     const objWidth = $(objSelector).width()
-    const objHeight =$(objSelector).height()
+    const objHeight = $(objSelector).height()
 
     const minX = objWidth/2 + viewPadding
     const minY = objHeight/2 + viewPadding
@@ -94,15 +88,74 @@ function setUpGame(){
     const maxX = viewWidth - (objWidth / 2)- viewPadding
     const maxY = viewHeight - (objHeight / 2) - titleHeightWithPadding  - viewPadding
 
+    console.log(`maX: ${maxX}, maY: ${maxY}`)
+    console.log(`miX: ${minX}, miY: ${minY}`)
+    console.log(`titleWP: ${titleHeightWithPadding}`)
+    console.log(`vW: ${viewWidth}, vH: ${viewHeight}, vP: ${viewPadding}`)
+    console.log(`oW: ${objWidth}, oH: ${objHeight}`)
     const x = randInt(minX, maxX)
     const y = randInt(minY, maxY)
 
-    $(objSelector).css({
-        "left" : x + "px",
-        "bottom" : y + "px"
+    return [x, y]
+}
+
+function incrementClicks(){
+    $("#clicks").text(parseInt($("#clicks").text()) + 1)
+}
+
+function changeCPS(){
+
+}
+
+function changePos(){
+    const pos = nextPos()
+
+    const x = pos[0]
+    const y = pos[1]
+
+    $("#game-object").css({
+        "left" : `${x}px`,  
+        "bottom" : `${y}px`
+    })
+}
+
+function setUpGame(){
+    setGameImageSize()
+
+    const objSelector = "#game-object"
+    changePos()
+
+    $(objSelector).css("visibility", "visible")
+    $(objSelector).removeClass("preGame")
+    $(objSelector).off("click")
+    $(objSelector).removeClass("centered")
+
+    $(objSelector).click(function() {
+        changePos()
+        incrementClicks()
+        changeCPS()
     })
 
-    //$("#title").html("<span id='leftSpan'>Clicks: </span><span id='rightSpan'>CPS: </span>")
+    $("#title").html(
+        "<span class='gameSpan'>" +
+            "Clicks: " + 
+            "<span id='clicks'>" +
+                "0" +
+            "</span>" +
+        "</span>" +
+        "<span class='gameSpan'>" + 
+            "<span id='time'>" +
+                "0.0" +
+            "</span>" +
+            "s" +
+        "</span>" +
+        "<span class='gameSpan'>" + 
+            "CPS: " +
+            "<span id='cps'>" +
+                "0" +
+            "</span>" +
+        "</span>"
+    )
 }
 
 function deactivate(selector){
@@ -127,6 +180,10 @@ function getFirstCharIndex(selector){
             return i
         }
     };
+}
+
+function formatPixelNumber(str){
+    return parseInt(str.substring(0, str.length-2))
 }
 
 function textSplitter(selector, characters, indexParam=null){
