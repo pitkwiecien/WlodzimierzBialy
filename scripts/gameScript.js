@@ -37,11 +37,11 @@ function nextPos(){
     const maxX = viewWidth - (objWidth / 2)- viewPadding
     const maxY = viewHeight - (objHeight / 2) - titleHeightWithPadding  - viewPadding
 
-    console.log(`maX: ${maxX}, maY: ${maxY}`)
-    console.log(`miX: ${minX}, miY: ${minY}`)
-    console.log(`titleWP: ${titleHeightWithPadding}`)
-    console.log(`vW: ${viewWidth}, vH: ${viewHeight}, vP: ${viewPadding}`)
-    console.log(`oW: ${objWidth}, oH: ${objHeight}`)
+    // console.log(`maX: ${maxX}, maY: ${maxY}`)
+    // console.log(`miX: ${minX}, miY: ${minY}`)
+    // console.log(`titleWP: ${titleHeightWithPadding}`)
+    // console.log(`vW: ${viewWidth}, vH: ${viewHeight}, vP: ${viewPadding}`)
+    // console.log(`oW: ${objWidth}, oH: ${objHeight}`)
     const x = randInt(minX, maxX)
     const y = randInt(minY, maxY)
 
@@ -133,7 +133,7 @@ function setUpGame(){
         "<span class='gameSpan'>" +
             "Clicks: " + 
             "<span id='clicks'>" +
-                "0" +
+                "1" +
             "</span>" +
         "</span>" +
         "<span class='gameSpan'>" + 
