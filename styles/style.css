@@ -14,6 +14,7 @@ body{
 }
 
 .main #title{
+    display: block;
     font-size: 5em;
     text-align: center;
     color: #FFF;
@@ -84,6 +85,34 @@ body{
 }
 
 .gameSpan{
-    width: 33.33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333%;
-    float: left;
+    flex: 1;
+}
+
+.centeredHorizontally{
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+#playAgain{
+    position: relative;
+    border-radius: 30px;
+    background-color: green;
+    width: 200px;
+    height: 80px;
+}
+
+#centeredText{
+    font-size: 2em;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#results{
+    margin-top: 20px;
+    font-size: 2em;
+    margin-bottom: 20px;
 }

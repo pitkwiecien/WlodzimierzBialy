@@ -9,7 +9,7 @@
 
     <script src="../scripts/commonFunctions.js"></script>
     <script src="../scripts/script.js"></script>
-    <script src="../scripts/textFormatter.js"></script>
+    <script src="../scripts/resultsScript.js"></script>
     
     <link rel="stylesheet" href="../styles/style.css"/>
     
@@ -24,16 +24,18 @@
         <div id="awards" class="links pageNavigators">Nagrody i wyróżnienia</div><br/>
         <div id="game" class="links pageNavigators">Leszek Gamer</div><br/>
     </div>
-    <div id="awards-main" class="main">
-        <div id="title">Leszek Włodzimierz Biały</div>
-        <div id="main-content">
-            <ul>
-                <li>Nagroda Warszawskiej Premiery Literackiej - Książka Czerwca 2010 za Źródło Mamerkusa</li>
-                <li>Nagroda Warszawskiej Premiery Literackiej - Książka Roku 2010 za Źródło Mamerkusa</li>
-            </ul>
+    <div id="results-main" class="main">
+        <div id="title">Your Results</div>
+        <div id="results">
+            Clicks: <span id="clicks">0</span><br/>
+            Time: <span id="time">0</span><br/>
+            Clicks Per Second: <span id="cps">0</span>
         </div>
-        <div id="prev" class="links navigators">&lt;</div>
-        <div id="next" class="links navigators">&gt;</div>
+        <div id="playAgain" onclick="playAgain()">
+            <div id="centeredText">
+                Play again
+            </div>
+        </div>
     </div>
 </body>
 </html>
